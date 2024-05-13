@@ -15,9 +15,20 @@ class CommentItem extends Component
 
     public EditComment $editForm;
 
+    public bool $deleted = false;
+
     public function mount()
     {
         $this->editForm->body = $this->comment->body;
+    }
+
+    public function delete()
+    {
+        $this->authorize('delete', $this->comment);
+
+        $this->comment->delete();
+
+        $this->deleted = true;
     }
 
     public function edit()

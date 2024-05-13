@@ -1,4 +1,6 @@
-<div
+<div>
+    @if (!$deleted)
+        <div
     class="my-6"
     x-data="{ replying: false, editing: false }"
     x-on:replied.window="replying = false"
@@ -37,6 +39,9 @@
             @can('edit', $comment)
                 <button class="text-gray-500" x-on:click="editing = true">Edit</button>
             @endcan
+            @can('delete', $comment)
+                <button class="text-gray-500" x-on:click="if (window.confirm('Are you sure?')) { $wire.delete() }">Delete</button>
+            @endcan
         </div>
 
         <template x-if="replying">
@@ -62,4 +67,6 @@
             </div>
         @endif
     </div>
+</div>
+    @endif
 </div>
