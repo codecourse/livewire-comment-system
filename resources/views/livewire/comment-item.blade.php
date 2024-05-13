@@ -30,7 +30,7 @@
             </form>
         </template>
 
-        @if ($comment->children->count())
+        @if (is_null($comment->parent_id) && $comment->children->count())
             <div class="ml-8 mt-8">
                 @foreach($comment->children as $child)
                     <livewire:comment-item :comment="$child" :key="$child->id" />
