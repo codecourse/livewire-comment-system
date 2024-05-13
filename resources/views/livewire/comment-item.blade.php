@@ -29,5 +29,13 @@
                 </div>
             </form>
         </template>
+
+        @if ($comment->children->count())
+            <div class="ml-8 mt-8">
+                @foreach($comment->children as $child)
+                    <livewire:comment-item :comment="$child" :key="$child->id" />
+                @endforeach
+            </div>
+        @endif
     </div>
 </div>
