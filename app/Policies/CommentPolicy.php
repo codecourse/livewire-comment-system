@@ -19,4 +19,9 @@ class CommentPolicy
     {
         return is_null($comment->parent_id);
     }
+
+    public function edit(User $user, Comment $comment)
+    {
+        return $user->id === $comment->user_id;
+    }
 }

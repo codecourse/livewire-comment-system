@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Livewire\Forms\CreateComment;
+use App\Livewire\Forms\EditComment;
 use App\Models\Comment;
 use Livewire\Component;
 
@@ -11,6 +12,13 @@ class CommentItem extends Component
     public Comment $comment;
 
     public CreateComment $replyForm;
+
+    public EditComment $editForm;
+
+    public function mount()
+    {
+        $this->editForm->body = $this->comment->body;
+    }
 
     public function reply()
     {
