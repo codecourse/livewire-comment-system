@@ -1,5 +1,5 @@
 <div>
-    <h1>Comments ([comment count])</h1>
+    <h1>Comments ({{ $comments->count() }})</h1>
 
     @auth
         <form wire:submit="createComment" class="mt-4">
