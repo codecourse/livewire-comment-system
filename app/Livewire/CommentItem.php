@@ -21,6 +21,8 @@ class CommentItem extends Component
 
         $reply->save();
 
+        $this->dispatch('replied', $this->comment->id);
+
         $this->replyForm->reset();
     }
 
