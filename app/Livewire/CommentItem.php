@@ -20,6 +20,17 @@ class CommentItem extends Component
         $this->editForm->body = $this->comment->body;
     }
 
+    public function edit()
+    {
+        $this->authorize('edit', $this->comment);
+
+        $this->editForm->validate();
+
+        $this->comment->update($this->editForm->only('body'));
+
+        $this->dispatch('edited', $this->comment->id);
+    }
+
     public function reply()
     {
         $this->authorize('reply', $this->comment);

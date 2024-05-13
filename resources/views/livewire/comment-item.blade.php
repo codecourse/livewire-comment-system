@@ -2,6 +2,7 @@
     class="my-6"
     x-data="{ replying: false, editing: false }"
     x-on:replied.window="replying = false"
+    x-on:edited.window="editing = false"
 >
     <div>
         <div class="flex items-center space-x-2">
