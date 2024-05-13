@@ -15,10 +15,10 @@
         </div>
 
         <template x-if="replying">
-            <form class="mt-4">
+            <form wire:submit="reply" class="mt-4">
                 <div>
-                    <x-textarea placeholder="Post a comment" class="w-full" rows="4" />
-                    <x-input-error :messages="$errors->get('form.body')" />
+                    <x-textarea placeholder="Post a comment" class="w-full" rows="4" wire:model="replyForm.body" />
+                    <x-input-error :messages="$errors->get('replyForm.body')" />
                 </div>
                 <div class="flex items-baseline space-x-2">
                     <x-primary-button class="mt-2">
