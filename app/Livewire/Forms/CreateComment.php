@@ -8,5 +8,5 @@ use Livewire\Form;
 class CreateComment extends Form
 {
     #[Validate('required')]
-    public string $body;
+    public string $body = '';
 }

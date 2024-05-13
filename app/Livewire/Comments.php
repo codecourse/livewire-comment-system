@@ -19,13 +19,15 @@ class Comments extends Component
         $comment = $this->model->comments()->make($this->form->only('body'));
         $comment->user()->associate(auth()->user());
 
+        $this->form->reset();
+
         $comment->save();
     }
 
     public function render()
     {
         return view('livewire.comments', [
-            'comments' => $this->model->comments
+            'comments' => $this->model->comments()->latest()->get()
         ]);
     }
 }
